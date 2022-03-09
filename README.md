@@ -40,6 +40,30 @@ You can also whitelist patterns like this:
 }
 ```
 
+If you like to set explicit allow headers, like `Authorization` and `content-type` you can do so like this:
+```json
+{
+    "plugins": {
+        "datasette-cors": {
+            "headers": ["Authorization","content-type"]
+        }
+    }
+}
+```
+
+Similarly, if you want to allow additional HTTP methods, like `OPTIONS`, you can do so like this:
+
+
+```json
+{
+    "plugins": {
+        "datasette-cors": {
+            "methods": ["GET","OPTIONS"]
+        }
+    }
+}
+```
+
 ## Testing it
 
 To test this plugin out, run it locally by saving one of the above examples as `metadata.json` and running this:

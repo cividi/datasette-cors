@@ -23,7 +23,7 @@ setup(
     version=VERSION,
     py_modules=["datasette_cors"],
     entry_points={"datasette": ["cors = datasette_cors"]},
-    install_requires=["asgi-cors~=0.3"],
+    install_requires=["asgi-cors @ https://github.com/cividi/asgi-cors/archive/feat/headers-and-methods.zip"],
     extras_require={
         "test": ["datasette~=0.29", "pytest", "pytest-asyncio", "asgiref~=3.1.2"]
     },

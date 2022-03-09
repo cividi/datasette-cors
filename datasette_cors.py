@@ -8,9 +8,11 @@ def asgi_wrapper(datasette):
     allow_all = config.get("allow_all") or False
     hosts = config.get("hosts") or []
     host_wildcards = config.get("host_wildcards") or []
+    headers = config.get("headers") or []
+    methods = config.get("methods") or []
 
     def wrap_with_asgi_cors(app):
-        if not (hosts or host_wildcards or allow_all):
+        if not (hosts or host_wildcards or allow_all or headers or methods):
             return app
 
         return asgi_cors(
@@ -18,6 +20,8 @@ def asgi_wrapper(datasette):
             allow_all=allow_all,
             hosts=hosts,
             host_wildcards=host_wildcards,
+            headers=headers,
+            methods=methods,
         )
 
     return wrap_with_asgi_cors
